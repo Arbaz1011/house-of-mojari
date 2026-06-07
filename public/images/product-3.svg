@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#FAF7F2"/>
+  <path d="M250 520 Q300 350 400 330 Q500 350 550 520 L530 560 Q400 590 270 560 Z" fill="#C4942A"/>
+  <path d="M270 500 L290 540 M530 500 L510 540" stroke="#7A5632" stroke-width="6" stroke-linecap="round"/>
+  <text x="400" y="700" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#5C4025">Casual Mojdi</text>
+</svg>

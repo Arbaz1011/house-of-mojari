@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FAF7F2"/>
+      <stop offset="50%" style="stop-color:#EBE0D0"/>
+      <stop offset="100%" style="stop-color:#DFD0B8"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C4942A"/>
+      <stop offset="100%" style="stop-color:#DFBD6A"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <ellipse cx="400" cy="520" rx="220" ry="40" fill="#8B1538" opacity="0.15"/>
+  <path d="M280 480 Q320 320 400 300 Q480 320 520 480 L500 520 Q400 560 300 520 Z" fill="#7A5632"/>
+  <path d="M290 480 Q330 340 400 320 Q470 340 510 480" fill="none" stroke="url(#gold)" stroke-width="3"/>
+  <ellipse cx="400" cy="300" rx="90" ry="35" fill="#8B1538"/>
+  <path d="M310 480 L290 520 M490 480 L510 520" stroke="#5C4025" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="350" cy="420" r="8" fill="#C4942A" opacity="0.8"/>
+  <circle cx="450" cy="400" r="6" fill="#C4942A" opacity="0.6"/>
+  <text x="400" y="680" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#8B1538" letter-spacing="8">ROYAL MOJDI</text>
+  <text x="400" y="720" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#C4942A" letter-spacing="4">HANDCRAFTED</text>
+</svg>

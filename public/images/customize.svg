@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#4D0B1D"/>
+  <rect x="100" y="200" width="600" height="500" fill="#7A5632" opacity="0.3" rx="8"/>
+  <path d="M280 600 Q320 400 400 380 Q480 400 520 600 L500 640 Q400 670 300 640 Z" fill="#C4942A" opacity="0.9"/>
+  <text x="400" y="850" text-anchor="middle" font-family="Georgia,serif" font-size="26" fill="#DFBD6A" letter-spacing="6">YOUR VISION</text>
+  <text x="400" y="890" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#F5EFE6" font-style="italic">Our artisan&apos;s hands</text>
+</svg>

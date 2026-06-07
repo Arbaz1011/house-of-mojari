@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#1A1209"/>
+  <path d="M250 520 Q300 350 400 330 Q500 350 550 520 L530 560 Q400 590 270 560 Z" fill="#8B1538"/>
+  <path d="M260 520 Q310 370 400 350 Q490 370 540 520" fill="none" stroke="#DFBD6A" stroke-width="5"/>
+  <text x="400" y="700" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#DFBD6A">Maharaja Gold</text>
+</svg>

@@ -6,6 +6,7 @@ import {
   timestamps,
   writeCollection,
 } from "./json-db";
+import { SAMPLE_CATEGORIES, SAMPLE_PRODUCTS } from "./seed-data";
 import { slugify } from "./utils";
 
 export interface StoredAdmin {
@@ -522,11 +523,30 @@ export async function seedDatabase(options?: {
     await createBanner({
       title: "Walk the Heritage",
       subtitle: "Premium Handcrafted Mojari from Jaipur",
-      image:
-        "https://images.unsplash.com/photo-1543163521-1bf539c55dd1?w=1200&h=600&fit=crop",
-      link: "/products",
+      image: "/images/hero-women.png",
+      link: "/products?category=Women's+Mojari",
       order: 0,
       active: true,
+    });
+  }
+}
+
+export async function ensureInitialData() {
+  if (await isDatabaseEmpty()) {
+    await seedDatabase({
+      adminEmail: process.env.ADMIN_EMAIL || "admin@houseofmojari.com",
+      adminPassword: process.env.ADMIN_PASSWORD || "Admin@123456",
+      products: SAMPLE_PRODUCTS,
+      categories: SAMPLE_CATEGORIES,
+    });
+    return;
+  }
+
+  const products = await readCollection<StoredProduct>("products");
+  if (products.length === 0) {
+    await seedDatabase({
+      products: SAMPLE_PRODUCTS,
+      categories: SAMPLE_CATEGORIES,
     });
   }
 }

@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "@/lib/auth";
 import { slugify } from "@/lib/utils";
-import { createProduct, listProducts } from "@/lib/repositories";
+import { createProduct, ensureInitialData, listProducts } from "@/lib/repositories";
 
 export async function GET(request: NextRequest) {
   try {
+    await ensureInitialData();
     const { searchParams } = new URL(request.url);
 
     const products = await listProducts({

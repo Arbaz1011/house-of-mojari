@@ -2,7 +2,11 @@ import fs from "fs/promises";
 import path from "path";
 import { randomUUID } from "crypto";
 
-const DATA_DIR = path.join(process.cwd(), "data");
+/** Vercel serverless only allows writes under /tmp */
+const DATA_DIR =
+  process.env.VERCEL === "1"
+    ? path.join("/tmp", "house-of-mojari-data")
+    : path.join(process.cwd(), "data");
 
 async function ensureDataDir() {
   await fs.mkdir(DATA_DIR, { recursive: true });

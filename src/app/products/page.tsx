@@ -15,7 +15,6 @@ function ProductsContent() {
   const [filters, setFilters] = useState({
     category: searchParams.get("category") || "",
     size: "",
-    color: "",
     minPrice: "",
     maxPrice: "",
     sort: "newest",

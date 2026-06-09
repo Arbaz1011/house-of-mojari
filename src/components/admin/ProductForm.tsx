@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import Input from "@/components/ui/Input";
 import Textarea from "@/components/ui/Textarea";
 import Button from "@/components/ui/Button";
-import { PRODUCT_CATEGORIES, PRODUCT_SIZES, PRODUCT_COLORS } from "@/types";
+import { PRODUCT_CATEGORIES, PRODUCT_SIZES } from "@/types";
 import type { Product } from "@/types";
 
 interface ProductFormProps {
@@ -27,7 +27,6 @@ export default function ProductForm({ initial, onSuccess }: ProductFormProps) {
     featured: initial?.featured || false,
     customizable: initial?.customizable || false,
     sizes: initial?.sizes || [...PRODUCT_SIZES],
-    colors: initial?.colors || ["Tan", "Brown", "Maroon"],
     images: initial?.images || [] as string[],
   });
 
@@ -80,6 +79,7 @@ export default function ProductForm({ initial, onSuccess }: ProductFormProps) {
       ...form,
       price: Number(form.price),
       stock: Number(form.stock),
+      colors: [],
     };
 
     try {

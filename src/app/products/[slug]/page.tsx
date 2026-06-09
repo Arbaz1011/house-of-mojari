@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import toast from "react-hot-toast";
 import ProductGallery from "@/components/products/ProductGallery";
 import SizeSelector from "@/components/products/SizeSelector";
-import ColorSelector from "@/components/products/ColorSelector";
 import Button from "@/components/ui/Button";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import FadeIn from "@/components/ui/FadeIn";
@@ -23,7 +22,6 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [size, setSize] = useState("");
-  const [color, setColor] = useState("");
   const [quantity, setQuantity] = useState(1);
 
   const addItem = useCartStore((s) => s.addItem);
@@ -35,7 +33,6 @@ export default function ProductDetailPage() {
       .then((data) => {
         setProduct(data);
         if (data.sizes?.length) setSize(data.sizes[0]);
-        if (data.colors?.length) setColor(data.colors[0]);
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -58,8 +55,8 @@ export default function ProductDetailPage() {
   }
 
   const handleAddToCart = () => {
-    if (!size || !color) {
-      toast.error("Please select size and color");
+    if (!size) {
+      toast.error("Please select a size");
       return;
     }
     addItem({
@@ -71,7 +68,7 @@ export default function ProductDetailPage() {
       image: product.images[0],
       quantity,
       size,
-      color,
+      color: "",
     });
     toast.success("Added to cart");
   };
@@ -80,7 +77,6 @@ export default function ProductDetailPage() {
     product.title,
     product.sku,
     size,
-    color,
     product.price
   )}`;
 
@@ -111,12 +107,6 @@ export default function ProductDetailPage() {
             {product.sizes?.length > 0 && (
               <div className="mb-6">
                 <SizeSelector sizes={product.sizes} selected={size} onSelect={setSize} />
-              </div>
-            )}
-
-            {product.colors?.length > 0 && (
-              <div className="mb-6">
-                <ColorSelector colors={product.colors} selected={color} onSelect={setColor} />
               </div>
             )}
 

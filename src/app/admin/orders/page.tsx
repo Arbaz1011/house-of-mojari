@@ -70,7 +70,7 @@ export default function AdminOrdersPage() {
             <div className="border-t border-sand-100 pt-4 mb-4">
               {order.products.map((p, i) => (
                 <p key={i} className="text-sm text-leather-600">
-                  {p.title} ({p.sku}) x{p.quantity} — Size {p.size}, {p.color}
+                  {p.title} ({p.sku}) x{p.quantity} — Size {p.size}
                 </p>
               ))}
               {order.notes && (

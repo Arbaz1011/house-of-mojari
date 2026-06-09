@@ -53,7 +53,7 @@ export default function CartDrawer() {
               ) : (
                 items.map((item) => (
                   <motion.div
-                    key={`${item.productId}-${item.size}-${item.color}`}
+                    key={`${item.productId}-${item.size}`}
                     layout
                     className="flex gap-4 p-3 card-luxury"
                   >
@@ -69,7 +69,7 @@ export default function CartDrawer() {
                         {item.title}
                       </h3>
                       <p className="text-xs text-leather-400 mt-0.5">
-                        {item.sku} · Size {item.size} · {item.color}
+                        {item.sku} · Size {item.size}
                       </p>
                       <p className="text-sm text-gold-500 mt-1">{formatPrice(item.price)}</p>
                       <div className="flex items-center gap-2 mt-2">
@@ -78,7 +78,6 @@ export default function CartDrawer() {
                             updateQuantity(
                               item.productId,
                               item.size,
-                              item.color,
                               item.quantity - 1
                             )
                           }
@@ -92,7 +91,6 @@ export default function CartDrawer() {
                             updateQuantity(
                               item.productId,
                               item.size,
-                              item.color,
                               item.quantity + 1
                             )
                           }
@@ -101,9 +99,7 @@ export default function CartDrawer() {
                           +
                         </button>
                         <button
-                          onClick={() =>
-                            removeItem(item.productId, item.size, item.color)
-                          }
+                          onClick={() => removeItem(item.productId, item.size)}
                           className="ml-auto text-xs text-leather-400 hover:text-maroon-500"
                         >
                           Remove

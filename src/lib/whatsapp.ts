@@ -15,7 +15,7 @@ export function generateWhatsAppMessage(order: OrderDetails): string {
     "",
     ...order.items.map(
       (item) =>
-        `${item.title} (${item.sku}) x${item.quantity} — Size ${item.size}, ${item.color}`
+        `${item.title} (${item.sku}) x${item.quantity} — Size ${item.size}`
     ),
     "",
     `Total: ₹${order.total.toLocaleString("en-IN")}`,
@@ -56,10 +56,9 @@ export function generateProductWhatsAppMessage(
   title: string,
   sku: string,
   size: string,
-  color: string,
   price: number
 ): string {
   return encodeURIComponent(
-    `Hello House of Mojari, I'm interested in:\n\n${title} (${sku})\nSize: ${size}\nColor: ${color}\nPrice: ₹${price.toLocaleString("en-IN")}\n\nPlease share availability and delivery details.`
+    `Hello House of Mojari, I'm interested in:\n\n${title} (${sku})\nSize: ${size}\nPrice: ₹${price.toLocaleString("en-IN")}\n\nPlease share availability and delivery details.`
   );
 }

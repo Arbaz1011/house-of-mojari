@@ -45,7 +45,7 @@ export default function CheckoutOrderPage() {
             <div className="space-y-4 mb-6">
               {items.map((item) => (
                 <div
-                  key={`${item.productId}-${item.size}-${item.color}`}
+                  key={`${item.productId}-${item.size}`}
                   className="flex gap-3"
                 >
                   <Image

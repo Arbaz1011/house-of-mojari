@@ -8,18 +8,17 @@ interface CartStore {
   items: CartItem[];
   isOpen: boolean;
   addItem: (item: CartItem) => void;
-  removeItem: (productId: string, size: string, color: string) => void;
-  updateQuantity: (
-    productId: string,
-    size: string,
-    color: string,
-    quantity: number
-  ) => void;
+  removeItem: (productId: string, size: string) => void;
+  updateQuantity: (productId: string, size: string, quantity: number) => void;
   clearCart: () => void;
   toggleCart: () => void;
   setCartOpen: (open: boolean) => void;
   getTotal: () => number;
   getItemCount: () => number;
+}
+
+function matchesItem(item: CartItem, productId: string, size: string) {
+  return item.productId === productId && item.size === size;
 }
 
 export const useCartStore = create<CartStore>()(
@@ -30,51 +29,38 @@ export const useCartStore = create<CartStore>()(
 
       addItem: (item) => {
         set((state) => {
-          const existing = state.items.find(
-            (i) =>
-              i.productId === item.productId &&
-              i.size === item.size &&
-              i.color === item.color
+          const cartItem = { ...item, color: "" };
+          const existing = state.items.find((i) =>
+            matchesItem(i, cartItem.productId, cartItem.size)
           );
           if (existing) {
             return {
               items: state.items.map((i) =>
-                i.productId === item.productId &&
-                i.size === item.size &&
-                i.color === item.color
-                  ? { ...i, quantity: i.quantity + item.quantity }
+                matchesItem(i, cartItem.productId, cartItem.size)
+                  ? { ...i, quantity: i.quantity + cartItem.quantity }
                   : i
               ),
               isOpen: true,
             };
           }
-          return { items: [...state.items, item], isOpen: true };
+          return { items: [...state.items, cartItem], isOpen: true };
         });
       },
 
-      removeItem: (productId, size, color) => {
+      removeItem: (productId, size) => {
         set((state) => ({
-          items: state.items.filter(
-            (i) =>
-              !(
-                i.productId === productId &&
-                i.size === size &&
-                i.color === color
-              )
-          ),
+          items: state.items.filter((i) => !matchesItem(i, productId, size)),
         }));
       },
 
-      updateQuantity: (productId, size, color, quantity) => {
+      updateQuantity: (productId, size, quantity) => {
         if (quantity <= 0) {
-          get().removeItem(productId, size, color);
+          get().removeItem(productId, size);
           return;
         }
         set((state) => ({
           items: state.items.map((i) =>
-            i.productId === productId && i.size === size && i.color === color
-              ? { ...i, quantity }
-              : i
+            matchesItem(i, productId, size) ? { ...i, quantity } : i
           ),
         }));
       },

@@ -41,7 +41,7 @@ export default function CheckoutPage() {
         <div className="space-y-4 mb-8">
           {items.map((item) => (
             <div
-              key={`${item.productId}-${item.size}-${item.color}`}
+              key={`${item.productId}-${item.size}`}
               className="flex gap-4 p-4 card-luxury"
             >
               <Image
@@ -54,14 +54,14 @@ export default function CheckoutPage() {
               <div className="flex-1">
                 <h3 className="font-sans text-sm">{item.title}</h3>
                 <p className="text-xs text-leather-400">
-                  {item.sku} · Size {item.size} · {item.color}
+                  {item.sku} · Size {item.size}
                 </p>
                 <p className="text-sm text-gold-500 mt-1">{formatPrice(item.price)}</p>
               </div>
               <div className="flex items-center gap-2">
                 <button
                   onClick={() =>
-                    updateQuantity(item.productId, item.size, item.color, item.quantity - 1)
+                    updateQuantity(item.productId, item.size, item.quantity - 1)
                   }
                   className="w-8 h-8 border border-sand-200 flex items-center justify-center"
                 >
@@ -70,7 +70,7 @@ export default function CheckoutPage() {
                 <span className="w-6 text-center text-sm">{item.quantity}</span>
                 <button
                   onClick={() =>
-                    updateQuantity(item.productId, item.size, item.color, item.quantity + 1)
+                    updateQuantity(item.productId, item.size, item.quantity + 1)
                   }
                   className="w-8 h-8 border border-sand-200 flex items-center justify-center"
                 >
@@ -78,7 +78,7 @@ export default function CheckoutPage() {
                 </button>
               </div>
               <button
-                onClick={() => removeItem(item.productId, item.size, item.color)}
+                onClick={() => removeItem(item.productId, item.size)}
                 className="text-leather-400 hover:text-maroon-500 self-start"
               >
                 ✕

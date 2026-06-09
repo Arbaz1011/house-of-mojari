@@ -37,7 +37,7 @@ export default function CustomizeSection() {
           </h2>
           <p className="font-body text-lg text-leather-500 dark:text-sand-300 leading-relaxed mb-6">
             From wedding celebrations to everyday elegance — create a pair that is
-            uniquely yours. Choose leather, colors, embroidery patterns, and
+            uniquely yours. Choose leather, embroidery patterns, and
             embellishments crafted by master artisans in Jaipur.
           </p>
           <ul className="space-y-3 mb-8">
